@@ -60,11 +60,19 @@ SELECT postgis_full_version();
 
 #### Importando Spatial Data (Dados geográficos)
 
+Ao utilizar o QGIS como uma ferramenta de visualição e manipulação de formatos. Temos o comando __ogr2ogr__ capaz de converter os arquivos shapefile (disponibilizados pelo professor Hudson) para conseguir manipula-los dentro do Banco de Dados. 
+  
+Mais informações sobre o comando, segue a [Documentação do OGR2OGR](https://gdal.org/programs/ogr2ogr.html).
+  
+ ```
+ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=geoia dbname=observatorio_pantanal password=PASSWORD" -nlt GEOMETRY output.shp
+ ```
+  
 _OBS:_ Caso o programa aponte um problema como: _Utility file not found. Please correct the Binary Path in the Preferences dialog postgres_. Sugere-se encontrar o caminho da __bin__ do PostgreSQL e copie-o.
 
-> Arquivos de Programa >> PostgreSQL > 15 >> bin
+> Arquivos de Programa >> PostgreSQL >> 15 >> bin
 
-No aplicativo do PGAdmin 4, selecione na aba superior _Files_ e clique em _Preferences_. Encontre a área _Path_ e selecione _Binay paths_.
+No aplicativo do pgAdmin 4, selecione na aba superior _Files_ e clique em _Preferences_. Encontre a área _Path_ e selecione _Binay paths_.
 Baseado na versão do seu PostgreSQL, altere o caminho da __Database Server__.
 
 <p align="center">
