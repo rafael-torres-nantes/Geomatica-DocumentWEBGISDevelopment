@@ -22,10 +22,10 @@ Para saber mais sobre o manual aprofundado do PostGis acesse [PostGis WorkShop](
 Entre no aplicativo do PGAdmin 4, utilizando a senha definida pelo usuário. Inicialmente, cria-se um _server_ ao qual irá conter o banco de dados.
 
 <p align="center">
-  <img src="![PGAdmin Menu 2](https://user-images.githubusercontent.com/58231791/198715495-e133441c-8667-4ecf-834b-d6bdad35031a.png)" width="720">
+  <img src="https://user-images.githubusercontent.com/58231791/198715495-e133441c-8667-4ecf-834b-d6bdad35031a.png" width="720">
 <p>
  
  <p align="center">
-  <img src="![PGAdmin Options Configuration](https://user-images.githubusercontent.com/58231791/198716747-a0cd55d8-05ec-45f0-9d01-5cdb09b4b7e5.png)
+  <img src="https://user-images.githubusercontent.com/58231791/198716747-a0cd55d8-05ec-45f0-9d01-5cdb09b4b7e5.png
 " width="420">
 <p>
