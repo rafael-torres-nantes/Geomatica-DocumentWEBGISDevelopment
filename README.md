@@ -65,7 +65,7 @@ Ao utilizar o QGIS como uma ferramenta de visualição e manipulação de format
 Mais informações sobre o comando, segue a [Documentação do OGR2OGR](https://gdal.org/programs/ogr2ogr.html).
   
  ```
- ogr2ogr -f "PostgreSQL" PG:"host=localhost user=geoia dbname=observatorio_pantanal password=PASSWORD" -nlt GEOMETRY output.shp
+ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=geoia dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON output.shp
  ```
 </p>
 </p>
@@ -82,4 +82,5 @@ Baseado na versão do seu PostgreSQL, altere o caminho da __Database Server__.
 <p>
 
 
+###
   
