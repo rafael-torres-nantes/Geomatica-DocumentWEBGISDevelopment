@@ -67,8 +67,11 @@ Mais informações sobre o comando, segue a [Documentação do OGR2OGR](https://
  ```
  ogr2ogr -f "PostgreSQL" PG:"host=localhost user=geoia dbname=observatorio_pantanal password=PASSWORD" -nlt GEOMETRY output.shp
  ```
+
   
-_OBS:_ Caso o programa aponte um problema como: _Utility file not found. Please correct the Binary Path in the Preferences dialog postgres_. Sugere-se encontrar o caminho da __bin__ do PostgreSQL e copie-o.
+</p>
+</p>
+__OBS:__ Caso o programa aponte um problema como: _Utility file not found. Please correct the Binary Path in the Preferences dialog postgres_. Sugere-se encontrar o caminho da __bin__ do PostgreSQL e copie-o.
 
 > Arquivos de Programa >> PostgreSQL >> 15 >> bin
 
