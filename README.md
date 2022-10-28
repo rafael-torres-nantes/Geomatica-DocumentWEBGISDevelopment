@@ -19,6 +19,8 @@ Para saber mais sobre o manual aprofundado do PostGis acesse [PostGis WorkShop](
 
 ## Configuração o PGAdmin 4 e definindo o ambiente
 
+### Criação e configuração do Servidor
+
 Entre no aplicativo do PGAdmin 4, utilizando a senha definida pelo usuário. Inicialmente, cria-se um _server_ ao qual irá conter o banco de dados.
 
 <p align="center">
@@ -31,3 +33,30 @@ Insira o nome do host que irá hospedar o servidor (no caso utilizaremos __local
 <p align="center">
   <img src="https://user-images.githubusercontent.com/58231791/198717192-a057b5cd-0e81-419a-8537-bbd922e2390f.png" width="420">
 <p>
+
+### Criando e importando um Banco de Dados
+
+Na página do _PGAdmin 4_, cria-se um ambiente para importar o banco de dados. Inseri-se um nome para o __dataset__.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/58231791/198725669-a280c8d9-6583-484e-b3c6-5115352518d7.png" width="720">
+<p>
+ 
+Após gerar o ambiente, roda-se o SQL Querry, para isso utiliza-se a ferramenta: _Querry Tool_. Segue os comandos para inserir e executar no terminal Querry:
+  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/58231791/198725983-881c5e91-9fcf-4b1f-b329-62b5a4a5cb84.png" width="720">
+<p>
+
+```
+CREATE EXTENSION postgis;
+
+```
+
+```
+SELECT postgis_full_version();
+
+```
+
+
+
