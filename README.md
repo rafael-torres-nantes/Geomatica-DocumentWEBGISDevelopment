@@ -25,7 +25,9 @@ Entre no aplicativo do PGAdmin 4, utilizando a senha definida pelo usuário. Ini
   <img src="https://user-images.githubusercontent.com/58231791/198715495-e133441c-8667-4ecf-834b-d6bdad35031a.png" width="720">
 <p>
  
- <p align="center">
-  <img src="https://user-images.githubusercontent.com/58231791/198716747-a0cd55d8-05ec-45f0-9d01-5cdb09b4b7e5.png
-" width="420">
+Insira o nome do host que irá hospedar o servidor (no caso utilizaremos __localhost__). Além da senha estabelecidade e a porta, no nosso caso:
+> 5432
+  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/58231791/198717192-a057b5cd-0e81-419a-8537-bbd922e2390f.png" width="420">
 <p>
