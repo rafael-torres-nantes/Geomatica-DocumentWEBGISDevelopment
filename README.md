@@ -138,7 +138,7 @@ __OBS__: Caso deseje utilizar outro valor de referência, utilize o seguinte com
  ST_SRID()
 ```  
 
-### [ST_AsGeoJSON](https://postgis.net/docs/ST_AsGeoJSON.html)
+### [ST_AsGeoJSON](https://postgis.net/docs/ST_AsGeoJSON.html) - Conversão em GeoJSON.
   
 Função responsável por retornar os pontos/polígonos como uma "geometria" GeoJSON. 
 
