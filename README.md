@@ -82,13 +82,13 @@ ogrinfo PG:"host=localhost port=5432 user='postgres' password='PASSWORD' dbname=
 ```
 > INFO: Open of `PG:host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'' using driver `PostgreSQL' successful.
 
-Assim, para inserir as informações do __dataset__ para as tabelas do _PostGIS_, deve-se acessar o diretório que os arquivos estão armazenados. Como por exemplo no nosso caso:
+Assim, para inserir as informações do __dataset__ para as tabelas do _PostGIS_, deve-se acessar o diretório que os arquivos estão armazenados. Como, por exemplo, no nosso caso:
 
 ```
 cd C:\Users\...\database_observatorio 
 ```
 
-Para conseguir enviar os dados para a visualização no Banco de Dados, aplica-se o seguinte código no terminal:
+Em seguida, aplica-se o seguinte código no terminal:
 
 ```
 ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON inferencia_out_2021.shp       
@@ -98,15 +98,25 @@ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pan
 ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON output.shp
 ```
 
-Desse modo, ao abrir o _pgAdmin 4_, observa-se o ícone __Tables__ encontra-se as tabelas referentes aos valores disponibilizados pelo __shapefile__.
-<p align="center">
-<img src="https://user-images.githubusercontent.com/58231791/199903501-dc06ae5a-7f43-48c2-b14a-07b42618625d.png" width="720">
-<p>
-
-
 Mais informações sobre o comando, segue a [Documentação do OGR2OGR](https://gdal.org/programs/ogr2ogr.html).
 
-## Visualização dos polígonos no mapa
+### Visualização dos polígonos no mapa
+Desse modo, ao abrir o _pgAdmin 4_, observa-se que na aba do ícone __Tables__ encontra-se as tabelas referentes aos valores disponibilizados pelo __shapefile__.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/58231791/199906376-d6dd5480-450b-430d-9791-b29fbad574e7.png" width="720">
+<p>
+
+Possibilitando assim, uma visualização bruta do __dataset__. Clique em _View Data_ e depois em _View all geometries in the column_. Segue as figuras:
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/58231791/199906411-d466395e-b660-4d1b-bfef-613352090f69.png" width="720">
+<p>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/58231791/199906408-4f028722-1980-4f88-850f-cc117405107b.png" width="720">
+<p>
+
+## 
   
 ### 
 
