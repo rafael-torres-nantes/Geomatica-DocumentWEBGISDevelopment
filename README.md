@@ -120,23 +120,56 @@ Possibilitando assim, uma visualização bruta do __dataset__. Clique em _View D
   
 ### [ST_Transform](https://postgis.net/docs/ST_Transform.html) - Pontos em um sistema de referência. 
 
-Função responsável por gerar novos pontos/polígonos com suas coordenadas em outros sistemas de referência espacial.
+Função responsável por gerar novos pontos/polígonos com suas coordenadas em outros sistemas de referência espacial. Basicamente, as geometrias em um mapa (sistema de referência).
+
+ ```
+ST_Transform(wkb_geometry, 4326)
+```
+  
+<p align="center">
+<img src="" width="720">
+<p>
+ 
+Por convenção dos alunos, utilizou-se o seguinte valor de sistema de referência:
+> 4326
+
+__OBS__: Caso deseje utilizar outro valor de referência, utilize o seguinte comando:
+ ```
+ ST_SRID()
+```  
+
+### [ST_AsGeoJSON](https://postgis.net/docs/ST_AsGeoJSON.html)
+  
+Função responsável por retornar os pontos/polígonos como uma "geometria" GeoJSON. 
+
+```
+ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326), 6) 
+```
+  
+<p align="center">
+<img src="" width="720">
+<p>
+
+O parâmetro **"6"** é associado como maneira de reduzir o número máximo de casas decimais. Recomenda-se para o sistema de referência **4326**, o valor **6**.
 
 ### [ST_Contains](http://postgis.net/docs/manual-1.4/ST_Contains.html) e [ST_MakeEnvelop](https://postgis.net/docs/ST_MakeEnvelope.html) - Seleção de pontos em área específica. 
 
+Na realização das atividades do **Observatório Pantanal**, como forma de selecionar polígonos em uma determinada precisão espacial, nossa solução são as funções *ST_Contais* e *ST_MakeEnvelope*. 
+  
 A função *ST_Contais* retorna um booleano verdadeiro se e somente se nenhum ponto/polígono de B estiver no exterior de A, e pelo menos um ponto/polígonos do interior de B estiver no interior de A. 
 
 Enquanto a função *ST_MakeEnvelope* gera um polígono retangular a partir dos valores mínimo e máximo para X e Y. Os valores de entrada devem estar no sistema de referência espacial especificado pelo SRID. Se nenhum SRID for especificado, o sistema de referência espacial desconhecido (SRID 0) será usado.
 
+Seguindo a área da aplicação, utiliza-se  da função *ST_MakeEnvelope* para especificar a área desejada. Desse modo, a função *ST_Contais*, verifica os polígonos que estão totalmente contidos na área determinada, sempre mantendo o mesmo sistema de referência.
+  
 ```
 SELECT ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326), 6) FROM inferencia_out_2021 
 WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geometry, 4326))
 ```
-
-### [ST_AsGeoJSON](https://postgis.net/docs/ST_AsGeoJSON.html)
+<p align="center">
+<img src="" width="720">
+<p>
   
-Retorna uma geometria como uma "geometria" GeoJSON ou uma linha como um "recurso" GeoJSON
-
 ## API para o PostGIS 
   
 ### Receber parâmetros externos
