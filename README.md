@@ -96,8 +96,9 @@ Em seguida, aplica-se o seguinte código no terminal:
 ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON inferencia_out_2021.shp       
 ```
 
+__OBS:__ Encontrou-se uma ferramenta disponível no __ogr2ogr__, chamada de _simplify_. Essa função reduz o número de polígonos por meio de uma simplificação por uma tolerância de distância:
 ```
-ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON output.shp
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON -simplify 10 output.shp
 ```
 
 Mais informações sobre o comando, segue a [Documentação do OGR2OGR](https://gdal.org/programs/ogr2ogr.html).
