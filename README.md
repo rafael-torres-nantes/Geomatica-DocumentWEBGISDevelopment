@@ -173,7 +173,22 @@ WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geome
 <p align="center">
 <img src="https://user-images.githubusercontent.com/58231791/199975893-b175ab47-9ba1-4b8b-bc9b-4e6699a41b7b.png" width="720">
 <p>
+ 
+#### Visualização do ST_Contains e ST_MakeEnvelop
+
+Para visualizar as informações
+```
+CREATE VIEW view_inferencia_out_2021 AS SELECT ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326), 6) FROM inferencia_out_2021 
+WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geometry, 4326))
+```
+```
+SELECT * from view_inferencia_out_2021 
+```
+<p align="center">
+<img src="https://user-images.githubusercontent.com/58231791/199978426-dfaaf1e0-bf01-4f2e-bc28-794c4373a439.png" width="720">
+<p>
   
+
 ## API para o PostGIS 
   
 ### Receber parâmetros externos
