@@ -58,19 +58,8 @@ CREATE EXTENSION postgis;
 SELECT postgis_full_version();
 ```
 
-#### Importando Spatial Data (Dados geográficos)
-
-Ao utilizar o [QGIS e OSGeo4W](https://www.e-education.psu.edu/geog489/node/2294) como uma ferramenta de visualição e manipulação de formatos. Temos o comando __ogr2ogr__ capaz de converter os arquivos shapefile (disponibilizados pelo professor Hudson) para conseguir manipula-los dentro do Banco de Dados. 
-  
-Mais informações sobre o comando, segue a [Documentação do OGR2OGR](https://gdal.org/programs/ogr2ogr.html).
-  
- ```
- ogr2ogr -f "PostgreSQL" PG:"host=localhost user=geoia dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON output.shp
- ```
-</p>
-</p>
-
-OBS: Caso o programa aponte um problema como _Utility file not found. Please correct the Binary Path in the Preferences dialog postgres_. Sugere-se encontrar o caminho da __bin__ do PostgreSQL e copie-o.
+ 
+__OBS__: Caso o programa aponte um problema como _Utility file not found. Please correct the Binary Path in the Preferences dialog postgres_. Sugere-se encontrar o caminho da __bin__ do PostgreSQL e copie-o.
 
 > Arquivos de Programa >> PostgreSQL >> 15 >> bin
 
@@ -80,7 +69,34 @@ Baseado na versão do seu PostgreSQL, altere o caminho da __Database Server__.
 <p align="center">
 <img src="https://user-images.githubusercontent.com/58231791/198731094-36c1a230-c3cc-498f-a556-fabdf9600b97.png" width="720">
 <p>
+</p>
+  
+#### Importando Spatial Data (Dados geográficos)
 
+Ao utilizar o [QGIS e OSGeo4W](https://www.e-education.psu.edu/geog489/node/2294) como uma ferramenta de visualição e manipulação de formatos. Temos o comando __ogr2ogr__ capaz de converter os arquivos shapefile (disponibilizados pelo professor Hudson) para conseguir manipula-los dentro do Banco de Dados. 
+  
+Inicia-se o _OSGeo4W Shell_, conectamos  _OSGeo4W Shell_ com o _PostGIS_ e suas tabelas. Através do seguinte comando no terminal:
+  
+```
+ogrinfo PG:"host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'"
+```
+> INFO: Open of `PG:host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'' using driver `PostgreSQL' successful.
+
+Assim, extrai-se os dados do _PostGIS_ para o arquivo _GeoJSON_.
+
+```
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=22032002rvms" -nlt POLYGON inferencia_out_2021.shp       
+```
+
+```
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON output.shp
+```
+
+ Mais informações sobre o comando, segue a [Documentação do OGR2OGR](https://gdal.org/programs/ogr2ogr.html).
+
+## Visualização dos polígonos no mapa
+  
+### 
 
 ###
-  
+
