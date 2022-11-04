@@ -176,10 +176,23 @@ WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geome
  
 #### Visualização do ST_Contains e ST_MakeEnvelop
 
-Para visualizar as informações
+Para visualizar os pontos/polígonos da área desejada, utilza-se o programa _QGIS_. Primeiramente, necessita-se criar um arquivo do tipo __Views__. Para isso, execute o próximo comando na _Querry Tool_ do _pgAdmin 4_:
+
 ```
-CREATE VIEW view_inferencia_out_2021 AS SELECT ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326), 6) FROM inferencia_out_2021 
-WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geometry, 4326))
+CREATE OR REPLACE VIEW view_inferencia_out_2021 AS (SELECT * FROM inferencia_out_2021 
+WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geometry, 4326)))
+```
+  
+Posteriormente estabele-se um conexão entre o _QGIS_ e o banco de dados. Observe a image abaixo:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/58231791/200005390-c1306a94-f4f3-4fa7-a9dc-1114f0530c1b.png" width="320"/>
+  <img src="https://user-images.githubusercontent.com/58231791/200005374-7939f56a-d5ba-44b3-b09a-09ad1ccd250c.png" width="190"/> 
+</p>
+
+```
+CREATE OR REPLACE VIEW view_inferencia_out_2021 AS (SELECT * FROM inferencia_out_2021 
+WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geometry, 4326)))
 ```
 ```
 SELECT * from view_inferencia_out_2021 
