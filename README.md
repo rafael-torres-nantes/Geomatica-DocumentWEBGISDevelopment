@@ -5,7 +5,7 @@
 Primeiramente, baixe o PostgreSQL e mantenha a instalação _default_ do programa. Segue o link para o [Download PostgreSQL](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/58231791/197791198-ac02747c-fc13-48bf-bd3b-35881581279c.png" width="720">
+  <img src="https://user-images.githubusercontent.com/58231791/197791198-ac02747c-fc13-48bf-bd3b-35881581279c.png" width="520">
 <p>
   
 Seguindo com o processo, inicie a instalação do _Stack Builder_. No momento do __menu de extensões__, selecione a opção "PostGIS 3.3 Bundle for PostgreSQL 15 (64 bit)". 
@@ -25,14 +25,14 @@ Para saber mais sobre o manual aprofundado do PostGis acesse [PostGis WorkShop](
 Entre no aplicativo do PGAdmin 4, utilizando a senha definida pelo usuário. Inicialmente, cria-se um _server_ ao qual irá conter o banco de dados.
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/58231791/198715495-e133441c-8667-4ecf-834b-d6bdad35031a.png" width="720">
+<img src="https://user-images.githubusercontent.com/58231791/198715495-e133441c-8667-4ecf-834b-d6bdad35031a.png" width="520">
 <p>
 
 Insira o nome do host que irá hospedar o servidor (no caso utilizaremos __localhost__). Além da senha estabelecidade e a porta, no nosso caso:
 > 5432
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/58231791/198717192-a057b5cd-0e81-419a-8537-bbd922e2390f.png" width="420">
+<img src="https://user-images.githubusercontent.com/58231791/198717192-a057b5cd-0e81-419a-8537-bbd922e2390f.png" width="320">
 <p>
 
 ### Criação e configuração de um banco de dados
@@ -40,13 +40,13 @@ Insira o nome do host que irá hospedar o servidor (no caso utilizaremos __local
 Na página do _PGAdmin 4_, cria-se um ambiente para importar o banco de dados. Inseri-se um nome para o __dataset__.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/58231791/198725669-a280c8d9-6583-484e-b3c6-5115352518d7.png" width="720">
+  <img src="https://user-images.githubusercontent.com/58231791/198725669-a280c8d9-6583-484e-b3c6-5115352518d7.png" width="520">
 <p>
 
  Após gerar o ambiente, roda-se o SQL Querry, para isso utiliza-se a ferramenta: _Querry Tool_. Segue os comandos para inserir e executar no terminal Querry:
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/58231791/198725983-881c5e91-9fcf-4b1f-b329-62b5a4a5cb84.png" width="720">
+  <img src="https://user-images.githubusercontent.com/58231791/198725983-881c5e91-9fcf-4b1f-b329-62b5a4a5cb84.png" width="520">
 <p>
 
 ```
@@ -65,7 +65,7 @@ No aplicativo do pgAdmin 4, selecione na aba superior _Files_ e clique em _Prefe
 Baseado na versão do seu PostgreSQL, altere o caminho da __Database Server__.
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/58231791/198731094-36c1a230-c3cc-498f-a556-fabdf9600b97.png" width="720">
+<img src="https://user-images.githubusercontent.com/58231791/198731094-36c1a230-c3cc-498f-a556-fabdf9600b97.png" width="520">
 <p>
 </p>
  
@@ -98,7 +98,7 @@ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pan
 
 __OBS:__ Encontrou-se uma ferramenta disponível no __ogr2ogr__, chamada de _simplify_. Essa função reduz o número de polígonos por meio de uma simplificação por uma tolerância de distância:
 ```
-ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON -simplify 10 output.shp
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON -simplify 10 inferencia_out_2021.shp
 ```
 
 Mais informações sobre o comando, segue a [Documentação do OGR2OGR](https://gdal.org/programs/ogr2ogr.html).
@@ -114,7 +114,7 @@ Desse modo, ao abrir o _pgAdmin 4_, observa-se que na aba do ícone __Tables__ e
 Possibilitando assim, uma visualização bruta do __dataset__. Clique em _View Data_ e depois, ao lado de __wkb geometry__, selecione a figura: _View all geometries in the column_. Dessa maneira, possibilita verificar os polígonos.
   
 <p align="center">
-<img src="https://user-images.githubusercontent.com/58231791/199906408-4f028722-1980-4f88-850f-cc117405107b.png" width="720">
+<img src="https://user-images.githubusercontent.com/58231791/199906408-4f028722-1980-4f88-850f-cc117405107b.png" width="520">
 <p>
 
 ## Funções do PostGIS e manipulação do shapefiles
@@ -128,7 +128,7 @@ SELECT ST_Transform(wkb_geometry, 4326) FROM inferencia_out_2021
 ```
   
 <p align="center">
-<img src="https://user-images.githubusercontent.com/58231791/199972485-537bd9fc-4361-4de4-8227-d1b0d858b4cd.png" width="720">
+<img src="https://user-images.githubusercontent.com/58231791/199972485-537bd9fc-4361-4de4-8227-d1b0d858b4cd.png" width="520">
 <p>
  
 Por convenção dos alunos, utilizou-se o seguinte valor de sistema de referência:
@@ -139,7 +139,7 @@ __OBS__: Caso deseje utilizar outro valor de referência, utilize o seguinte com
  SELECT * FROM spatial_ref_sys
 ```  
 <p align="center">
-<img src="https://user-images.githubusercontent.com/58231791/199972589-7494612f-a7fe-4835-92d6-7923f2be700a.png" width="720">
+<img src="https://user-images.githubusercontent.com/58231791/199972589-7494612f-a7fe-4835-92d6-7923f2be700a.png" width="520">
 <p>
   
 ### [ST_AsGeoJSON](https://postgis.net/docs/ST_AsGeoJSON.html) - Conversão em GeoJSON.
@@ -151,7 +151,7 @@ SELECT ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326), 6) FROM inferencia_out_202
 ```
   
 <p align="center">
-<img src="https://user-images.githubusercontent.com/58231791/199972745-6d2f2449-aa56-4c6b-b618-d78bfcbe4690.png" width="720">
+<img src="https://user-images.githubusercontent.com/58231791/199972745-6d2f2449-aa56-4c6b-b618-d78bfcbe4690.png" width="520">
 <p>
 
 O parâmetro **"6"** é associado como maneira de reduzir o número máximo de casas decimais. Recomenda-se para o sistema de referência **4326**, o valor **6**.
@@ -171,7 +171,7 @@ SELECT ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326), 6) FROM inferencia_out_202
 WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geometry, 4326))
 ```
 <p align="center">
-<img src="" width="720">
+<img src="https://user-images.githubusercontent.com/58231791/199975893-b175ab47-9ba1-4b8b-bc9b-4e6699a41b7b.png" width="720">
 <p>
   
 ## API para o PostGIS 
