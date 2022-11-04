@@ -133,7 +133,9 @@ SELECT ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326), 6) FROM inferencia_out_202
 WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geometry, 4326))
 ```
 
-### ST_AsGeoJSON(https://postgis.net/docs/ST_AsGeoJSON.html)
+### [ST_AsGeoJSON](https://postgis.net/docs/ST_AsGeoJSON.html)
+  
+Retorna uma geometria como uma "geometria" GeoJSON ou uma linha como um "recurso" GeoJSON
 
 ## API para o PostGIS 
   
