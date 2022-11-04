@@ -182,7 +182,11 @@ Para visualizar os pontos/polígonos da área desejada, utilza-se o programa _QG
 CREATE OR REPLACE VIEW view_inferencia_out_2021 AS (SELECT * FROM inferencia_out_2021 
 WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geometry, 4326)))
 ```
-  
+
+```
+SELECT * from view_inferencia_out_2021 
+```
+
 Posteriormente estabele-se um conexão entre o _QGIS_ e o banco de dados. Observe a image abaixo:
 
 <p align="center">
@@ -190,13 +194,6 @@ Posteriormente estabele-se um conexão entre o _QGIS_ e o banco de dados. Observ
   <img src="https://user-images.githubusercontent.com/58231791/200005374-7939f56a-d5ba-44b3-b09a-09ad1ccd250c.png" width="190"/> 
 </p>
 
-```
-CREATE OR REPLACE VIEW view_inferencia_out_2021 AS (SELECT * FROM inferencia_out_2021 
-WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geometry, 4326)))
-```
-```
-SELECT * from view_inferencia_out_2021 
-```
 <p align="center">
 <img src="https://user-images.githubusercontent.com/58231791/199978426-dfaaf1e0-bf01-4f2e-bc28-794c4373a439.png" width="720">
 <p>
