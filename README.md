@@ -123,11 +123,11 @@ Possibilitando assim, uma visualização bruta do __dataset__. Clique em _View D
 Função responsável por gerar novos pontos/polígonos com suas coordenadas em outros sistemas de referência espacial. Basicamente, as geometrias em um mapa (sistema de referência).
 
  ```
-ST_Transform(wkb_geometry, 4326)
+SELECT ST_Transform(wkb_geometry, 4326) FROM inferencia_out_2021
 ```
   
 <p align="center">
-<img src="" width="720">
+<img src="https://user-images.githubusercontent.com/58231791/199972485-537bd9fc-4361-4de4-8227-d1b0d858b4cd.png" width="720">
 <p>
  
 Por convenção dos alunos, utilizou-se o seguinte valor de sistema de referência:
@@ -135,19 +135,22 @@ Por convenção dos alunos, utilizou-se o seguinte valor de sistema de referênc
 
 __OBS__: Caso deseje utilizar outro valor de referência, utilize o seguinte comando:
  ```
- ST_SRID()
+ SELECT * FROM spatial_ref_sys
 ```  
-
+<p align="center">
+<img src="https://user-images.githubusercontent.com/58231791/199972589-7494612f-a7fe-4835-92d6-7923f2be700a.png" width="720">
+<p>
+  
 ### [ST_AsGeoJSON](https://postgis.net/docs/ST_AsGeoJSON.html) - Conversão em GeoJSON.
   
-Função responsável por retornar os pontos/polígonos como uma "geometria" GeoJSON. 
+Função responsável por retornar os pontos/polígonos como uma "geometria" GeoJSON.  
 
 ```
-ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326), 6) 
+SELECT ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326), 6) FROM inferencia_out_2021
 ```
   
 <p align="center">
-<img src="" width="720">
+<img src="https://user-images.githubusercontent.com/58231791/199972745-6d2f2449-aa56-4c6b-b618-d78bfcbe4690.png" width="720">
 <p>
 
 O parâmetro **"6"** é associado como maneira de reduzir o número máximo de casas decimais. Recomenda-se para o sistema de referência **4326**, o valor **6**.
