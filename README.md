@@ -116,9 +116,26 @@ Possibilitando assim, uma visualização bruta do __dataset__. Clique em _View D
 <img src="https://user-images.githubusercontent.com/58231791/199906408-4f028722-1980-4f88-850f-cc117405107b.png" width="720">
 <p>
 
-## Manipulação do shapefiles
+## Funções do PostGIS e manipulação do shapefiles
   
-### 
+### [ST_Transform](https://postgis.net/docs/ST_Transform.html) - Pontos em um sistema de referência. 
 
-###
+Função responsável por gerar novos pontos/polígonos com suas coordenadas em outros sistemas de referência espacial.
+
+### [ST_Contains](http://postgis.net/docs/manual-1.4/ST_Contains.html) e [ST_MakeEnvelop](https://postgis.net/docs/ST_MakeEnvelope.html) - Seleção de pontos em área específica. 
+
+A função *ST_Contais* retorna um booleano verdadeiro se e somente se nenhum ponto/polígono de B estiver no exterior de A, e pelo menos um ponto/polígonos do interior de B estiver no interior de A. 
+
+Enquanto a função *ST_MakeEnvelope* gera um polígono retangular a partir dos valores mínimo e máximo para X e Y. Os valores de entrada devem estar no sistema de referência espacial especificado pelo SRID. Se nenhum SRID for especificado, o sistema de referência espacial desconhecido (SRID 0) será usado.
+
+```
+SELECT ST_AsGeoJSON(ST_Transform(wkb_geometry, 4326), 6) FROM inferencia_out_2021 
+WHERE ST_Contains(ST_MakeEnvelope(-58,-22,-57,-21, 4326), ST_Transform(wkb_geometry, 4326))
+```
+
+### ST_AsGeoJSON(https://postgis.net/docs/ST_AsGeoJSON.html)
+
+## API para o PostGIS 
+  
+### Receber parâmetros externos
 
