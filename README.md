@@ -16,6 +16,7 @@ Seguindo com o processo, inicie a instalação do _Stack Builder_. No momento do
 
 Para saber mais sobre o manual aprofundado do PostGis acesse [PostGis WorkShop](https://docs.google.com/presentation/d/1qYXdeCIymLl32uoAHvAPrp1r-hK-_4Z8InG7sHEo6vc/edit?usp=sharing).
 
+</p>
 
 ## Configuração o PGAdmin 4 e definindo o ambiente
 
@@ -34,9 +35,7 @@ Insira o nome do host que irá hospedar o servidor (no caso utilizaremos __local
 <img src="https://user-images.githubusercontent.com/58231791/198717192-a057b5cd-0e81-419a-8537-bbd922e2390f.png" width="420">
 <p>
 
-### Criação de um Banco de Dados
-
-#### Definindo e configurando um ambiente para o dataset
+### Criação e configuração de um banco de dados
 
 Na página do _PGAdmin 4_, cria-se um ambiente para importar o banco de dados. Inseri-se um nome para o __dataset__.
 
@@ -58,7 +57,6 @@ CREATE EXTENSION postgis;
 SELECT postgis_full_version();
 ```
 
- 
 __OBS__: Caso o programa aponte um problema como _Utility file not found. Please correct the Binary Path in the Preferences dialog postgres_. Sugere-se encontrar o caminho da __bin__ do PostgreSQL e copie-o.
 
 > Arquivos de Programa >> PostgreSQL >> 15 >> bin
@@ -70,8 +68,10 @@ Baseado na versão do seu PostgreSQL, altere o caminho da __Database Server__.
 <img src="https://user-images.githubusercontent.com/58231791/198731094-36c1a230-c3cc-498f-a556-fabdf9600b97.png" width="720">
 <p>
 </p>
-  
-#### Importando Spatial Data (Dados geográficos)
+ 
+## Importando Spatial Data (Dados Geográficos) para o PostGis
+
+### Configurando o terminal do OSGeo4W
 
 Ao utilizar o [QGIS e OSGeo4W](https://www.e-education.psu.edu/geog489/node/2294) como uma ferramenta de visualição e manipulação de formatos. Temos o comando __ogr2ogr__ capaz de converter os arquivos shapefile (disponibilizados pelo professor Hudson) para conseguir manipula-los dentro do Banco de Dados. 
   
@@ -81,6 +81,8 @@ Inicia-se o _OSGeo4W Shell_, conectamos  _OSGeo4W Shell_ com o _PostGIS_ e suas 
 ogrinfo PG:"host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'"
 ```
 > INFO: Open of `PG:host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'' using driver `PostgreSQL' successful.
+
+### Inserindo o dataset no banco de dados
 
 Assim, para inserir as informações do __dataset__ para as tabelas do _PostGIS_, deve-se acessar o diretório que os arquivos estão armazenados. Como, por exemplo, no nosso caso:
 
@@ -101,22 +103,20 @@ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pan
 Mais informações sobre o comando, segue a [Documentação do OGR2OGR](https://gdal.org/programs/ogr2ogr.html).
 
 ### Visualização dos polígonos no mapa
+
 Desse modo, ao abrir o _pgAdmin 4_, observa-se que na aba do ícone __Tables__ encontra-se as tabelas referentes aos valores disponibilizados pelo __shapefile__.
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/58231791/199906376-d6dd5480-450b-430d-9791-b29fbad574e7.png" width="720">
+<img src="https://user-images.githubusercontent.com/58231791/199906376-d6dd5480-450b-430d-9791-b29fbad574e7.png" width="320">
 <p>
 
-Possibilitando assim, uma visualização bruta do __dataset__. Clique em _View Data_ e depois em _View all geometries in the column_. Segue as figuras:
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/58231791/199906411-d466395e-b660-4d1b-bfef-613352090f69.png" width="720">
-<p>
+Possibilitando assim, uma visualização bruta do __dataset__. Clique em _View Data_ e depois, ao lado de __wkb geometry__, selecione a figura: _View all geometries in the column_. Dessa maneira, possibilita verificar os polígonos.
+  
 <p align="center">
 <img src="https://user-images.githubusercontent.com/58231791/199906408-4f028722-1980-4f88-850f-cc117405107b.png" width="720">
 <p>
 
-## 
+## Manipulação do shapefiles
   
 ### 
 
