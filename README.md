@@ -117,7 +117,7 @@ Possibilitando assim, uma visualização bruta do __dataset__. Clique em _View D
 <img src="https://user-images.githubusercontent.com/58231791/199906408-4f028722-1980-4f88-850f-cc117405107b.png" width="520">
 <p>
 
-## Funções do PostGIS e manipulação do shapefiles
+## Funções do PostGres e manipulação do dataset
   
 ### [ST_Transform](https://postgis.net/docs/ST_Transform.html) - Pontos em um sistema de referência. 
 
@@ -199,7 +199,27 @@ Posteriormente estabele-se um conexão entre o _QGIS_ e o banco de dados. Observ
 </p>
   
 
-## API para o PostGIS 
-  
-### Receber parâmetros externos
+## Funções do PostGIS e manipulação do shapefile
 
+Para manipulação dos shapefiles utilza-se a ferramenta _OSGeo4W Shell_ , conectamos  _OSGeo4W Shell_ com o _PostGIS_ e suas tabelas. Através do seguinte comando no terminal:
+  
+```
+ogrinfo PG:"host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'"
+```
+> INFO: Open of `PG:host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'' using driver `PostgreSQL' successful.
+  
+### -nln <name> - Atribuir nomes para as Tables
+
+Para exemplificar os próximos passos e ajudar na visualização, utiza-se a função  _-nln <name>_ para inserir as informações no banco de dados.
+
+```
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nln "OUTPUT_NAME" -nlt POLYGON inferencia_out_2021.shp 
+```
+
+### -simplify <tolerance> - Reduzir o tamanho do arquivo shapefile 
+
+A função _-simplify <tolerance>_ gera um arquivo shapefile capaz de reduzir o tamanho do shapefile, por meio de um algoritmo de simplificação de polígonos. 
+
+```
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -simplify 100 -nln "output_simplify100" -nlt POLYGON inferencia_out_2021.shp
+```
