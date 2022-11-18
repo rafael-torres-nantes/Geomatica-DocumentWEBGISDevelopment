@@ -223,3 +223,26 @@ A função _-simplify <tolerance>_ gera um arquivo shapefile capaz de reduzir o 
 ```
 ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -simplify 100 -nln "output_simplify100" -nlt POLYGON inferencia_out_2021.shp
 ```
+
+| Tolerance | Polígonos | Tamanho do Arquivo | 
+| --- | --- | --- |
+| `Nenhuma` | 26349 | 26000 |
+| `10` | 26000 | 26000 |
+| `25` | 26000 | 26000 |
+| `50` | 26000 | 26000 |
+| `100` | 26000 | 26000 |
+  
+  
+ ## Acesso de regiões no PostGres
+ 
+ [Site do IBGE](https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional/15778-divisoes-regionais-do-brasil.html?=&t=downloads)
+ ```
+SELECT inferencia_out_2021.ogc_fid,
+       inferencia_out_2021.fid,
+       inferencia_out_2021.wkb_geometry
+FROM inferencia_out_2021
+WHERE st_contains(( 
+  SELECT st_transform(rg2017_regioesgeograficas2017.wkb_geometry, 4326) AS st_transform
+  FROM rg2017_regioesgeograficas2017
+  WHERE rg2017_regioesgeograficas2017.nome::text = 'Corumbá'::text), st_transform(inferencia_out_2021.wkb_geometry, 4326));
+```
