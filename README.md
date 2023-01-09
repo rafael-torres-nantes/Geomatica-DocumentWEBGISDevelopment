@@ -226,11 +226,11 @@ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pan
 
 | Tolerance | Polígonos | Tamanho do Arquivo | 
 | --- | --- | --- |
-| `Nenhuma` | 26349 | 26000 |
-| `10` | 26000 | 26000 |
-| `25` | 26000 | 26000 |
-| `50` | 26000 | 26000 |
-| `100` | 26000 | 26000 |
+| `Nenhuma` | 26349 | 17.52 MB |
+| `10` | 26000 | 8.09 MB |
+| `25` | 26000 | 6.47 MB |
+| `50` | 26000 | 5.87 MB |
+| `100` | 26000 | 5.58 MB |
   
   
  ## Acesso de regiões no PostGres
