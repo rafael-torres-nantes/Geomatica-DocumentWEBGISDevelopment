@@ -233,6 +233,15 @@ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pan
 | `1000` | 21695 | 9.82 MB |
 | `5000` | 2091 | 9.77 MB |
   
+ 
+### -skipfailures - Ignora erros na tabela e reduzir o tamanho do arquivo shapefile
+
+A função _-skipfailures_  optimiza a performance da tabela, ignorando erros. 
+
+```
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -skipfailures -nln "OUTPUT_NAME" -nlt POLYGON inferencia_out_2021.shp
+```
+  
  ## Acesso de regiões no PostGIS
  
 Por meio do [Site do IBGE](https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional/15778-divisoes-regionais-do-brasil.html?=&t=downloads), instala-se os shapefiles das regiões do Brasil.
