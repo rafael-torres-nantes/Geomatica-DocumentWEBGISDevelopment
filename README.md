@@ -242,10 +242,10 @@ Por meio do [Site do IBGE](https://www.ibge.gov.br/geociencias/organizacao-do-te
   <img src="https://user-images.githubusercontent.com/58231791/212733685-b0598061-1c86-49a5-bd48-c7a598e505b8.png" width="720"/>
 </p>
   
- Ao instalar o arquivo *ZIP*, descompacte-o na workspace. Abra o  _OSGeo4W Shell_, acesse o diretório do arquivo das regiões e insira o comando para registrar o shapefile no banco de dados:
+ Ao instalar o arquivo **ZIP**, descompacte-o na workspace. Abra o  _OSGeo4W Shell_, acesse o diretório do arquivo das regiões e insira o comando para registrar o shapefile no banco de dados:
 
 ```
-ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=22032002rvms" -nln "regioes_brasil" -nlt POLYGON RG2017_regioesgeograficas2017.shp
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nln "regioes_brasil" -nlt POLYGON RG2017_regioesgeograficas2017.shp
 ``` 
 
  Desse modo, os arquivos do IBGE estão cadastrados no dataset. Para visualiza-los, acesse o _pgAdmin 4_ e no QuerryTool, utilize o comando:
