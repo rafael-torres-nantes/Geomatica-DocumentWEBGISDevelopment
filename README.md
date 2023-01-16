@@ -234,16 +234,29 @@ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pan
 | `150` | 2091 | 10.6 MB |
 | `1000` | 21695 | 5.58 MB |
   
- ## Acesso de regiões no PostGres
+ ## Acesso de regiões no PostGIS
  
- [Site do IBGE](https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional/15778-divisoes-regionais-do-brasil.html?=&t=downloads)
+Por meio do [Site do IBGE](https://www.ibge.gov.br/geociencias/organizacao-do-territorio/divisao-regional/15778-divisoes-regionais-do-brasil.html?=&t=downloads), instala-se os shapefiles das regiões do Brasil.
+
+ <p align="center">
+  <img src="https://user-images.githubusercontent.com/58231791/212733685-b0598061-1c86-49a5-bd48-c7a598e505b8.png" width="720"/>
+</p>
+  
+ Ao instalar o arquivo *ZIP*, descompacte-o na workspace. Abra o  _OSGeo4W Shell_, acesse o diretório do arquivo das regiões e insira o comando para registrar o shapefile no banco de dados:
+
+```
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=22032002rvms" -nln "regioes_brasil" -nlt POLYGON RG2017_regioesgeograficas2017.shp
+``` 
+
+ Desse modo, os arquivos do IBGE estão cadastrados no dataset. Para visualiza-los, acesse o _pgAdmin 4_ e no QuerryTool, utilize o comando:
+  
  ```
 SELECT inferencia_out_2021.ogc_fid,
-       inferencia_out_2021.fid,
-       inferencia_out_2021.wkb_geometry
+      inferencia_out_2021.fid,
+      inferencia_out_2021.wkb_geometry
 FROM inferencia_out_2021
 WHERE st_contains(( 
-  SELECT st_transform(rg2017_regioesgeograficas2017.wkb_geometry, 4326) AS st_transform
-  FROM rg2017_regioesgeograficas2017
-  WHERE rg2017_regioesgeograficas2017.nome::text = 'Corumbá'::text), st_transform(inferencia_out_2021.wkb_geometry, 4326));
+ SELECT st_transform(regioes_brasil.wkb_geometry, 4326) AS st_transform
+ FROM regioes_brasil
+ WHERE regioes_brasil.nome::text = 'Corumbá'::text), st_transform(inferencia_out_2021.wkb_geometry, 4326));
 ```
