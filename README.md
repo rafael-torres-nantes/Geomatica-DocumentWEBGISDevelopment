@@ -78,9 +78,9 @@ Ao utilizar o [QGIS e OSGeo4W](https://www.e-education.psu.edu/geog489/node/2294
 Inicia-se o _OSGeo4W Shell_, conectamos  _OSGeo4W Shell_ com o _PostGIS_ e suas tabelas. Através do seguinte comando no terminal:
   
 ```
-ogrinfo PG:"host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'"
+ogrinfo PG:"host=localhost port=5432 user='postgres' password='PASSWORD' dbname='geoia-db'"
 ```
-> INFO: Open of `PG:host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'' using driver `PostgreSQL' successful.
+> INFO: Open of `PG:host=localhost port=5432 user='postgres' password='PASSWORD' dbname='geoia-db'' using driver `PostgreSQL' successful.
 
 ### Inserindo o dataset no banco de dados
 
@@ -93,12 +93,12 @@ cd C:\Users\...\database_observatorio
 Em seguida, aplica-se o seguinte código no terminal:
 
 ```
-ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON inferencia_out_2021.shp       
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=geoia-db password=PASSWORD" -nlt POLYGON inferencia_out_2021.shp       
 ```
 
 __OBS:__ Encontrou-se uma ferramenta disponível no __ogr2ogr__, chamada de _simplify_. Essa função reduz o número de polígonos por meio de uma simplificação por uma tolerância de distância:
 ```
-ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nlt POLYGON -simplify 10 inferencia_out_2021.shp
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=geoia-db password=PASSWORD" -nlt POLYGON -simplify 10 inferencia_out_2021.shp
 ```
 
 Mais informações sobre o comando, segue a [Documentação do OGR2OGR](https://gdal.org/programs/ogr2ogr.html).
@@ -204,16 +204,16 @@ Posteriormente estabele-se um conexão entre o _QGIS_ e o banco de dados. Observ
 Para manipulação dos shapefiles utilza-se a ferramenta _OSGeo4W Shell_ , conectamos  _OSGeo4W Shell_ com o _PostGIS_ e suas tabelas. Através do seguinte comando no terminal:
   
 ```
-ogrinfo PG:"host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'"
+ogrinfo PG:"host=localhost port=5432 user='postgres' password='PASSWORD' dbname='geoia-db'"
 ```
-> INFO: Open of `PG:host=localhost port=5432 user='postgres' password='PASSWORD' dbname='observatorio_pantanal'' using driver `PostgreSQL' successful.
+> INFO: Open of `PG:host=localhost port=5432 user='postgres' password='PASSWORD' dbname='geoia-db'' using driver `PostgreSQL' successful.
   
 ### -nln <name> - Atribuir nomes para as Tables
 
 Para exemplificar os próximos passos e ajudar na visualização, utiza-se a função  _-nln <name>_ para inserir as informações no banco de dados.
 
 ```
-ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nln "OUTPUT_NAME" -nlt POLYGON inferencia_out_2021.shp 
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=geoia-db password=PASSWORD" -nln "OUTPUT_NAME" -nlt POLYGON inferencia_out_2021.shp 
 ```
 
 ### -simplify <tolerance> - Reduzir o tamanho do arquivo shapefile 
@@ -221,7 +221,7 @@ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pan
 A função _-simplify <tolerance>_ gera um arquivo shapefile capaz de reduzir o tamanho do shapefile, por meio de um algoritmo de simplificação de polígonos. 
 
 ```
-ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -simplify 100 -nln "output_simplify100" -nlt POLYGON inferencia_out_2021.shp
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=geoia-db password=PASSWORD" -simplify 100 -nln "output_simplify100" -nlt POLYGON inferencia_out_2021.shp
 ```
 
 | Tolerance | Polígonos | Tamanho do Arquivo | 
@@ -239,7 +239,7 @@ ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pan
 A função _-skipfailures_  optimiza a performance da tabela, ignorando erros. 
 
 ```
-ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -skipfailures -nln "OUTPUT_NAME" -nlt POLYGON inferencia_out_2021.shp
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=geoia-db password=PASSWORD" -skipfailures -nln "OUTPUT_NAME" -nlt POLYGON inferencia_out_2021.shp
 ```
   
  ## Acesso de regiões no PostGIS
@@ -253,7 +253,7 @@ Por meio do [Site do IBGE](https://www.ibge.gov.br/geociencias/organizacao-do-te
  Ao instalar o arquivo **ZIP**, descompacte-o na workspace. Abra o  _OSGeo4W Shell_, acesse o diretório do arquivo das regiões e insira o comando para registrar o shapefile no banco de dados:
 
 ```
-ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=observatorio_pantanal password=PASSWORD" -nln "regioes_brasil" -nlt POLYGON RG2017_regioesgeograficas2017.shp
+ogr2ogr -f "PostgreSQL" PG:"host=localhost user=postgres dbname=geoia-db password=PASSWORD" -nln "regioes_brasil" -nlt POLYGON RG2017_regioesgeograficas2017.shp
 ``` 
 
  Desse modo, os arquivos do IBGE estão cadastrados no dataset. Para visualiza-los, acesse o _pgAdmin 4_ e no QuerryTool, utilize o comando:
