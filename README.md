@@ -268,3 +268,12 @@ WHERE st_contains((
  FROM regioes_brasil
  WHERE regioes_brasil.nome::text = 'Corumbá'::text), st_transform(inferencia_out_2021.wkb_geometry, 4326));
 ```
+
+## União dos Arquivos Shapefiles
+ 
+Em razão de como são oferecidos os dados pela Equipe da Geomática, monitorados pelo professor Marcato Torna-se necessário unir os dataset disposto em, normalmente, 4 shapefiles. Para isso, utiliza-se dos seguintes comandos:
+
+```
+ogr2ogr -f "ESRI SHAPEFILE" -update -append MERGE_SHAPEFILE.shp SOURCE_X.shp
+``` 
+> **OBS**: No momento, existe a necessidade de rodar o código anterior para cada *shapeile*.
