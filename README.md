@@ -269,6 +269,16 @@ WHERE st_contains((
  WHERE regioes_brasil.nome::text = 'Corumbá'::text), st_transform(inferencia_out_2021.wkb_geometry, 4326));
 ```
 
+## Monitoramento dos Dados da Geomática
+ 
+Criou-se uma planilha para monitorar os dados recebidos pelo laboratório da Geomática. As informações são separadas baseado no mês e a região referente ao *shapefile* (região da Amazônia e região do Pantanal). Segue o [link para a planilha de controle](https://docs.google.com/spreadsheets/d/1o5l5IpMkMCaB1jB-CjRyz5TsCNNKEmmdwOcoftRSnAM/edit?usp=sharing).
+  
+  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/58231791/217116970-5ff8f808-71bb-4c67-a87f-065c1cb82158.png" width="720"/>
+</p>
+
+  
 ## União dos Arquivos Shapefiles
  
 Em razão de como são oferecidos os dados pela Equipe da Geomática, monitorados pelo professor Marcato Torna-se necessário unir os dataset disposto em, normalmente, 4 shapefiles. Para isso, utiliza-se dos seguintes comandos:
@@ -276,4 +286,4 @@ Em razão de como são oferecidos os dados pela Equipe da Geomática, monitorado
 ```
 ogr2ogr -f "ESRI SHAPEFILE" -update -append MERGE_SHAPEFILE.shp SOURCE_X.shp
 ``` 
-> **OBS**: No momento, existe a necessidade de rodar o código anterior para cada *shapefile*, nesse caso altere o nome dos arquivos na posição do: **SOURCE_X.shp**.
+> **OBS**: Existe a necessidade de rodar o código anterior para cada *shapefile*, nesse caso altere o nome dos arquivos na posição do: **SOURCE_X.shp**.
