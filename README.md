@@ -276,4 +276,4 @@ Em razão de como são oferecidos os dados pela Equipe da Geomática, monitorado
 ```
 ogr2ogr -f "ESRI SHAPEFILE" -update -append MERGE_SHAPEFILE.shp SOURCE_X.shp
 ``` 
-> **OBS**: No momento, existe a necessidade de rodar o código anterior para cada *shapeile*.
+> **OBS**: No momento, existe a necessidade de rodar o código anterior para cada *shapefile*, nesse caso altere o nome dos arquivos na posição do: **SOURCE_X.shp**.
