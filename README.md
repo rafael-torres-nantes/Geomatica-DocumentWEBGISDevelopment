@@ -297,18 +297,15 @@ Em razão de como são oferecidos os dados pela Equipe da Geomática, monitorado
 </p>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/58231791/232280923-d344a55d-3c0d-4aa1-bb71-81f3914e83e0.png" width="720"/>
+  <img src="https://user-images.githubusercontent.com/58231791/232280923-d344a55d-3c0d-4aa1-bb71-81f3914e83e0.png" width="480"/>
 </p>
 
-Encontra-se o diretório em que o arquivo está salvo, e clique no arquivo _MERGE_SHAPEFILE.shp_. Ao cliclar no botão __Adionar__, aparecerá a seguinte interface:
+Encontra-se o diretório em que o arquivo está salvo, e clique no arquivo _MERGE_SHAPEFILE.shp_. Ao cliclar no botão __Adicionar__, aparecerá uma interface. Insira na aba de pesquisa do Filtro o código de referência do Pseudo-Mercator, no caso: __3857__.
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/58231791/232281734-903a81c9-0946-4321-8405-c80ccfe22555.png" width="720"/>
+  <img src="https://user-images.githubusercontent.com/58231791/232281734-903a81c9-0946-4321-8405-c80ccfe22555.png" width="520"/>
 </p>
 
 > **OBS**: Caso não apareça a interface, clique no canto inferior direito do _QGIS_, em que estará escrito algo similar: **EPSG:4326**.
-
-Insira na aba de pesquisa do Filtro o código de referência do Pseudo-Mercator, no caso: 
-> 3857
 
 Por fim, exporte o arquivo *shapefile* para o sistema de referência que o usuário desejar.
 <p align="center">
