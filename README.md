@@ -281,9 +281,36 @@ Criou-se uma planilha para monitorar os dados recebidos pelo laboratório da Geo
   
 ## União dos Arquivos Shapefiles
  
-Em razão de como são oferecidos os dados pela Equipe da Geomática, monitorados pelo professor Marcato Torna-se necessário unir os dataset disposto em, normalmente, 4 shapefiles. Para isso, utiliza-se dos seguintes comandos:
+Em razão de como são oferecidos os dados pela Equipe da Geomática, monitorados pelo professor Marcato, torna-se necessário unir os dataset disposto em, normalmente, 4 shapefiles. Para isso, utiliza-se dos seguintes comandos:
 
 ```
 ogr2ogr -f "ESRI SHAPEFILE" -update -append MERGE_SHAPEFILE.shp SOURCE_X.shp
 ``` 
 > **OBS**: Existe a necessidade de rodar o código anterior para cada *shapefile*, nesse caso altere o nome dos arquivos na posição do: **SOURCE_X.shp**.
+
+## Solucionando a ausência do Arquivo de Referência (PRJ)
+
+Em razão de como são oferecidos os dados pela Equipe da Geomática, monitorados pelo professor Marcato, torna-se necessário adicionar um ponto referencial no dataset. Para resolver esse problema no momento, utiliza-se do Software _QGIS_ para fazer as alterações necessárias. Para isso, deve-se abrir o arquivo *shapefile* no  _QGIS_:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/58231791/232280626-3bc43e8e-1c7c-40b5-a783-be28993db701.png" width="720"/>
+</p>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/58231791/232280923-d344a55d-3c0d-4aa1-bb71-81f3914e83e0.png" width="720"/>
+</p>
+
+Encontra-se o diretório em que o arquivo está salvo, e clique no arquivo _MERGE_SHAPEFILE.shp_. Ao cliclar no botão __Adionar__, aparecerá a seguinte interface:
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/58231791/232281734-903a81c9-0946-4321-8405-c80ccfe22555.png" width="720"/>
+</p>
+
+> **OBS**: Caso não apareça a interface, clique no canto inferior direito do _QGIS_, em que estará escrito algo similar: **EPSG:4326**.
+
+Insira na aba de pesquisa do Filtro o código de referência do Pseudo-Mercator, no caso: 
+> 3857
+
+Por fim, exporte o arquivo *shapefile* para o sistema de referência que o usuário desejar.
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/58231791/232283451-aab9c04b-7b37-4f3d-b191-7dd567261dd0.png" width="720"/>
+</p>
